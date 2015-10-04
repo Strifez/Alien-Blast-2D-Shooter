@@ -46,11 +46,8 @@ public class EnemyController : MonoBehaviour {
 		}
 		
 	void OnTriggerEnter2D(Collider2D otherGameObject) {
-		if (otherGameObject.tag == "Bullet") {
-			//this._islandAudioSource.Play (); // play the yay sound 
+		if (otherGameObject.tag == "Bullet") {	
 			this._Reset();
-			//enemyController._Reset(); 
-			//this.scoreValue += 100; //add 100 points
 		}
 	}
 		// resets the Enemy
