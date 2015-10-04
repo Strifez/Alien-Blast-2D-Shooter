@@ -44,8 +44,8 @@ public class EnemyBullet : MonoBehaviour
 			Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2 (1,1));
 
 			//Destory the bullet
-			if((transform.position.x < min.x) || (transform.position.x> max.x) || 
-			   (transform.position.y<min.y) || (transform.position.y > max.y))
+			if((transform.position.x < min.x) || (transform.position.x > max.x) || 
+			   (transform.position.y <min.y) || (transform.position.y > max.y))
 			{
 				Destroy(gameObject);
 			}

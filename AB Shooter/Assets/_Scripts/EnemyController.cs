@@ -45,8 +45,16 @@ public class EnemyController : MonoBehaviour {
 			}
 		}
 		
+	void OnTriggerEnter2D(Collider2D otherGameObject) {
+		if (otherGameObject.tag == "Bullet") {
+			//this._islandAudioSource.Play (); // play the yay sound 
+			this._Reset();
+			//enemyController._Reset(); 
+			//this.scoreValue += 100; //add 100 points
+		}
+	}
 		// resets the Enemy
-		private void _Reset() {
+		public void _Reset() {
 			this._CurrentDrift = Random.Range (drift.minDrift, drift.maxDrift);
 			this._CurrentSpeed = Random.Range (speed.minSpeed, speed.maxSpeed);
 			Vector2 resetPosition = new Vector2 (boundary.xMax, Random.Range (boundary.yMin, boundary.yMax));

@@ -11,25 +11,24 @@ public class PlayerController : MonoBehaviour {
 		
 		public GameObject PlayerBulletGo;
 		public GameObject BulletSpawn;
-		public GameObject BulletSpawn2;
 		
 		public float speed;
 		public Boundary boundary;
 		
 		//public GameObject shot;
 		//public Transform shotSpawn;
-		//public float fireRate;
+		public float fireRate;
 		
 		private float nextFire;
 		
 		void Update ()
 		{
-		if (Input.GetKeyDown ("space")) {
+		if (Input.GetKeyDown ("space") && Time.time > nextFire) {
+
+			nextFire = Time.time + fireRate;
 			GameObject bullet1= (GameObject) Instantiate (PlayerBulletGo);
 			bullet1.transform.position = BulletSpawn.transform.position; //set initial bullet position
-
-			GameObject bullet2= (GameObject) Instantiate (PlayerBulletGo);
-			bullet2.transform.position= BulletSpawn2.transform.position;
+		
 		}
 
 

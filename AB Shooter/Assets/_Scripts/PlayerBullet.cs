@@ -3,10 +3,10 @@ using System.Collections;
 
 public class PlayerBullet : MonoBehaviour {
 
-	float speed;
+	public float speed;
 	// Use this for initialization
 	void Start () {
-		speed = 0.25f;
+
 	}
 	
 	// Update is called once per frame
@@ -27,6 +27,14 @@ public class PlayerBullet : MonoBehaviour {
 		if (transform.position.x > max.x) {
 			Destroy(gameObject);
 		}
-	
+	}
+
+	void OnTriggerEnter2D(Collider2D otherGameObject) {
+		if (otherGameObject.tag == "Enemy") {
+			//this._islandAudioSource.Play (); // play the yay sound 
+			Destroy (gameObject); 
+			//this.scoreValue += 100; //add 100 points
+		}
 	}
 }
+
