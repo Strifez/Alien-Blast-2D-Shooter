@@ -35,8 +35,8 @@ public class EnemyController : MonoBehaviour {
 		// Update is called once per frame
 		void Update () {
 			Vector2 currentPosition = gameObject.GetComponent<Transform> ().position;
-			currentPosition.x -= this._CurrentDrift;
-			currentPosition.y += this._CurrentSpeed;
+			currentPosition.x += this._CurrentDrift;
+			currentPosition.y -= this._CurrentSpeed;
 			gameObject.GetComponent<Transform> ().position = currentPosition;
 			
 			// Check left boundary
@@ -46,9 +46,13 @@ public class EnemyController : MonoBehaviour {
 		}
 		
 	void OnTriggerEnter2D(Collider2D otherGameObject) {
-		if (otherGameObject.tag == "Bullet") {	
+		if (otherGameObject.tag == "Bullet"){	
 			this._Reset();
 		}
+
+		/*if (otherGameObject.tag == "Player") {
+			Destroy (gameObject);
+		}*/
 	}
 		// resets the Enemy
 		public void _Reset() {
@@ -57,6 +61,8 @@ public class EnemyController : MonoBehaviour {
 			Vector2 resetPosition = new Vector2 (boundary.xMax, Random.Range (boundary.yMin, boundary.yMax));
 			gameObject.GetComponent<Transform> ().position = resetPosition;
 		}
+		
+
 	}
 
 

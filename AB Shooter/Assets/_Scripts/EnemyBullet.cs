@@ -49,8 +49,15 @@ public class EnemyBullet : MonoBehaviour
 			{
 				Destroy(gameObject);
 			}
+
 		}
 	}
+
+	void OnTriggerEnter2D(Collider2D otherGameObject){
+	if (otherGameObject.tag == "Player") {
+	Destroy (gameObject);
+}
+}
 }
 
 	
