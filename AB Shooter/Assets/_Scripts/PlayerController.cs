@@ -57,16 +57,14 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D otherGameObject) {
 		if (otherGameObject.tag == "EBullet") {	
-			//Destroy (gameObject);
-			Debug.Log ("works");
+			Destroy (gameObject);
+
 		}
 		if (otherGameObject.tag == "Enemy"){
 			Destroy (gameObject);
-			Debug.Log ("Collided with Enemy");
+
 		}
-		/*if (otherGameObject.tag == "Enemy") {
-			Destroy (gameObject);
-		}*/
+	
 	}
 
 

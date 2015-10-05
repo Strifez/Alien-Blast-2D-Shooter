@@ -7,17 +7,17 @@ public class PlayerCollider : MonoBehaviour {
 	public Text scoreLabel;
 	public Text livesLabel;
 	public int scoreValue = 0;
-	public int livesValue = 5;
+	public int livesValue = 10;
 	public Text gameOverLabel;
 	public Text finalScoreLabel;
 
 	private AudioSource[] _audioSources; // an array of AudioSources
-	private AudioSource _cloudAudioSource, _islandAudioSource;
+	private AudioSource _backgroundMusic, _bulletshot;
 	// Use this for initialization
 	void Start () {
 			this._audioSources = this.GetComponents<AudioSource> ();
-			this._cloudAudioSource = this._audioSources [1];
-			this._islandAudioSource = this._audioSources [2];
+			this._backgroundMusic = this._audioSources [1];
+			this._bulletshot = this._audioSources [2];
 			
 			this._SetScore ();
 			this.gameOverLabel.enabled = false;

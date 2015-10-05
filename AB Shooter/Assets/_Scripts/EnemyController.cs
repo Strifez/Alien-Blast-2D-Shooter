@@ -35,8 +35,8 @@ public class EnemyController : MonoBehaviour {
 		// Update is called once per frame
 		void Update () {
 			Vector2 currentPosition = gameObject.GetComponent<Transform> ().position;
-			currentPosition.x += this._CurrentDrift;
-			currentPosition.y -= this._CurrentSpeed;
+			currentPosition.x -= this._CurrentDrift;
+			currentPosition.y += this._CurrentSpeed;
 			gameObject.GetComponent<Transform> ().position = currentPosition;
 			
 			// Check left boundary
