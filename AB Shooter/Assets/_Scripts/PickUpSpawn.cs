@@ -4,7 +4,7 @@ using System.Collections;
 public class PickUpSpawn : MonoBehaviour {
 	public int DstonePoints;
 	public GameObject pickUp;
-	public Vector3 spawnValues;
+	public Vector2 spawnValues;
 	public int pickUpCount;
 	public float spawnWait;
 	public float startWait;
@@ -36,7 +36,7 @@ public class PickUpSpawn : MonoBehaviour {
 			{
 				for (int i = 0; i < pickUpCount; i++) 
 				{
-					Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+					Vector2 spawnPosition = new Vector2 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (pickUp, spawnPosition, spawnRotation);
 					yield return new WaitForSeconds (spawnWait);
