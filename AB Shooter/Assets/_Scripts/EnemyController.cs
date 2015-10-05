@@ -27,10 +27,17 @@ public class EnemyController : MonoBehaviour {
 		private float _CurrentSpeed;
 		private float _CurrentDrift;
 		
+	AudioSource _deathSound;
+	//private AudioSource [] _audioSources;
+	//private AudioSource _deathSound;
 		// Use this for initialization
 		void Start () {
-			this._Reset ();
-		}
+		this._Reset ();
+		_deathSound = GetComponent<AudioSource> ();
+		//this._audioSources = this.GetComponents<AudioSource> ();
+	//	this._deathSound = this._audioSources [1];
+
+	}
 		
 		// Update is called once per frame
 		void Update () {
@@ -46,13 +53,15 @@ public class EnemyController : MonoBehaviour {
 		}
 		
 	void OnTriggerEnter2D(Collider2D otherGameObject) {
-		if (otherGameObject.tag == "Bullet"){	
+		if (otherGameObject.tag == "Bullet"){
 			this._Reset();
+			_deathSound.Play ();
+			//this._deathSound.Play ();
+
+
+
 		}
 
-		/*if (otherGameObject.tag == "Player") {
-			Destroy (gameObject);
-		}*/
 	}
 		// resets the Enemy
 		public void _Reset() {

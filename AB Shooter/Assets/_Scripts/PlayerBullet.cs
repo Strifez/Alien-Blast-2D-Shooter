@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerBullet : MonoBehaviour {
 
 	public float speed;
+
 	// Use this for initialization
 	void Start () {
 
@@ -31,10 +32,15 @@ public class PlayerBullet : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D otherGameObject) {
 		if (otherGameObject.tag == "Enemy") {
-			//this._islandAudioSource.Play (); // play the yay sound 
 			Destroy (gameObject); 
 			//this.scoreValue += 100; //add 100 points
 		}
+
+	}
+
+	private void _death ()
+	{
+		Destroy (gameObject);
 	}
 }
 

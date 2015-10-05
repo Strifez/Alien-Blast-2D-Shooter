@@ -35,7 +35,7 @@ public class PlayerCollider : MonoBehaviour {
 			this.scoreValue += 100; //add 100 points
 		}*/
 		if (otherGameObject.tag == "Enemy") {
-			//this._cloudAudioSource.Play (); // play the thunder sound
+			//this._deathSound.Play (); // play the thunder sound
 			this.livesValue -= 1; // minus 1 life
 			if (this.livesValue <= 0) {
 				this._EndGame ();
