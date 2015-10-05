@@ -11,6 +11,7 @@ public class PlayerCollider : MonoBehaviour {
 	public Text gameOverLabel;
 	public Text totalPointsLabel;
 	public int minusDmg= 1;
+	public int DstonePoints= 300;
 
 	private AudioSource[] _audioSources; // an array of AudioSources
 	private AudioSource _backgroundMusic, _bulletshot;
@@ -30,7 +31,7 @@ public class PlayerCollider : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D otherGameObject) { //Pick Up Item trigger
 		if (otherGameObject.tag == "DStone") {
-			this.pointsValue += 300;
+			ScoreCheck (DstonePoints); //+ 300 points for picking up Dstone
 		}
 
 		if (otherGameObject.tag == "Enemy") { 		//Enemy Trigger
