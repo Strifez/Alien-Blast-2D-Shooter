@@ -27,6 +27,7 @@ public class EnemyController : MonoBehaviour {
 		private float _CurrentSpeed;
 		private float _CurrentDrift;
 		
+
 	AudioSource _deathSound;
 	//private AudioSource [] _audioSources;
 	//private AudioSource _deathSound;

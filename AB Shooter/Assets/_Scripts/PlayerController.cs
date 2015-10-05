@@ -54,18 +54,5 @@ public class PlayerController : MonoBehaviour {
 					Mathf.Clamp (GetComponent<Rigidbody2D>().position.y, boundary.yMin, boundary.yMax)
 					);
 		}
-
-	void OnTriggerEnter2D(Collider2D otherGameObject) {
-		if (otherGameObject.tag == "EBullet") {	
-			Destroy (gameObject);
-
-		}
-		if (otherGameObject.tag == "Enemy"){
-			Destroy (gameObject);
-
-		}
 	
-	}
-
-
- }
+}

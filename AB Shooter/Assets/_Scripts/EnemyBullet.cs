@@ -3,9 +3,12 @@ using System.Collections;
 
 public class EnemyBullet : MonoBehaviour 
 {
+	public int minusLife; 
 	float speed;
 	Vector2 _direction;
 	bool isReady;
+
+	private PlayerCollider playerCollider;
 
 	void Awake ()
 	{
@@ -15,7 +18,11 @@ public class EnemyBullet : MonoBehaviour
 
 	void Start () 
 	{
-	
+		GameObject playerColliderObject = GameObject.FindWithTag("Player");
+		if (playerColliderObject != null)
+		{
+			playerCollider = playerColliderObject.GetComponent<PlayerCollider>();
+		}
 	}
 	//Function to set the bullet's direction
 	public void SetDirection(Vector2 direction)
@@ -54,10 +61,11 @@ public class EnemyBullet : MonoBehaviour
 	}
 
 	void OnTriggerEnter2D(Collider2D otherGameObject){
-	if (otherGameObject.tag == "Player") {
-	Destroy (gameObject);
-}
-}
+		if (otherGameObject.tag == "Player") {
+			playerCollider.LifeCheck (minusLife);
+			Destroy (gameObject);
+		}
+	}
 }
 
 	

@@ -2,12 +2,16 @@
 using System.Collections;
 
 public class PlayerBullet : MonoBehaviour {
-
+	public int addPoints;
 	public float speed;
-
+	private PlayerCollider playerCollider;
 	// Use this for initialization
 	void Start () {
-
+		GameObject playerColliderObject = GameObject.FindWithTag("Player");
+		if (playerColliderObject != null)
+		{
+			playerCollider = playerColliderObject.GetComponent<PlayerCollider>();
+		}
 	}
 	
 	// Update is called once per frame
@@ -33,7 +37,7 @@ public class PlayerBullet : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D otherGameObject) {
 		if (otherGameObject.tag == "Enemy") {
 			Destroy (gameObject); 
-			//this.scoreValue += 100; //add 100 points
+			playerCollider.ScoreCheck(addPoints); //add 100 points
 		}
 
 	}
