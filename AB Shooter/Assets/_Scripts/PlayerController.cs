@@ -14,40 +14,31 @@ public class PlayerController : MonoBehaviour {
 		
 		public float speed;
 		public Boundary boundary;
-		
-		//public GameObject shot;
-		//public Transform shotSpawn;
+
 		public float fireRate;
 		
 		private float nextFire;
 		
 		void Update ()
 		{
-		if (Input.GetKeyDown ("space") && Time.time > nextFire) {
+		if (Input.GetKeyDown ("space") && Time.time > nextFire) { //the fire button will be the spacebar
 
 			nextFire = Time.time + fireRate;
-			GameObject bullet1= (GameObject) Instantiate (PlayerBulletGo);
+			GameObject bullet1= (GameObject) Instantiate (PlayerBulletGo); //Instantiate the bullet
 			bullet1.transform.position = BulletSpawn.transform.position; //set initial bullet position
 		
 		}
 
-
-		/*if (Input.GetButton ("Fire1") && Time.time > nextFire) {
-			nextFire = Time.time + fireRate;
-			//Rigidbody.velocity.x = new Vector3 (shot, shotSpawn.Transform,Quaternion.identity); 
-			Instantiate (shot, shotSpawn.position, Quaternion.identity); //as GameObject;
-			//GetComponent<AudioSource>().Play ();
-		}*/
 	}
 		
 		void FixedUpdate (){
-			float moveHorizontal = Input.GetAxis ("Horizontal");
+			float moveHorizontal = Input.GetAxis ("Horizontal"); // how the player will move
 			float moveVertical = Input.GetAxis ("Vertical");
 			
 			Vector2 movement = new Vector2(moveHorizontal, moveVertical); 
 			GetComponent<Rigidbody2D>().velocity = movement * speed;
 			
-			GetComponent<Rigidbody2D>().position = new Vector2 
+			GetComponent<Rigidbody2D>().position = new Vector2 //Boundary for the player so they dont move too close to the waves or off screen
 				(
 					Mathf.Clamp (GetComponent<Rigidbody2D>().position.x, boundary.xMin, boundary.xMax), 
 					

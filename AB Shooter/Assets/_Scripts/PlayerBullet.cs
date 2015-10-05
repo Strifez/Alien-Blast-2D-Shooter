@@ -2,12 +2,13 @@
 using System.Collections;
 
 public class PlayerBullet : MonoBehaviour {
-	public int addPoints;
+
+	public int addPoints; // public instances for adding points
 	public float speed;
-	private PlayerCollider playerCollider;
+	private PlayerCollider playerCollider; //reference purposes
 	// Use this for initialization
 	void Start () {
-		GameObject playerColliderObject = GameObject.FindWithTag("Player");
+		GameObject playerColliderObject = GameObject.FindWithTag("Player"); //to call another method from another script, reference is required
 		if (playerColliderObject != null)
 		{
 			playerCollider = playerColliderObject.GetComponent<PlayerCollider>();
@@ -28,13 +29,13 @@ public class PlayerBullet : MonoBehaviour {
 		// this is the top-right point of the screen
 		Vector2 max = Camera.main.ViewportToWorldPoint (new Vector2 (1, 1));
 
-		// if the bullet went outside the screen on the right, then destroy the bullet
+		// if the bullet went outside the screen on the right, then destroy the bullet (this code is found in a Unity tutorial, please check External Document for source)
 		if (transform.position.x > max.x) {
 			Destroy(gameObject);
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D otherGameObject) {
+	void OnTriggerEnter2D(Collider2D otherGameObject) { //trigger to add points and destroy gameObject
 		if (otherGameObject.tag == "Enemy") {
 			Destroy (gameObject); 
 			playerCollider.ScoreCheck(addPoints); //add 100 points
@@ -42,9 +43,5 @@ public class PlayerBullet : MonoBehaviour {
 
 	}
 
-	private void _death ()
-	{
-		Destroy (gameObject);
-	}
 }
 

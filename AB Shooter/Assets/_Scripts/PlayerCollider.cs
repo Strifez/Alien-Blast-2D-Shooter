@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerCollider : MonoBehaviour {
 
-	public Text pointsLabel;
+	public Text pointsLabel; // this is mostly taken from Mail Pilot done in Class
 	public Text heartsLabel;
 	public int pointsValue = 0;
 	public int heartsValue = 10;
@@ -16,14 +16,11 @@ public class PlayerCollider : MonoBehaviour {
 	private AudioSource _backgroundMusic, _bulletshot;
 	// Use this for initialization
 	void Start () {
-			this.gameOverLabel.enabled = false;
+			this.gameOverLabel.enabled = false;			// this is for the GUI text making sure the gameover text is not displayed until its time
 			this.totalPointsLabel.enabled = false;
 			this._audioSources = this.GetComponents<AudioSource> ();
 			this._backgroundMusic = this._audioSources [1];
 			this._bulletshot = this._audioSources [2];
-			
-			//this._SetScore ();
-			
 	}
 	
 	// Update is called once per frame
@@ -31,35 +28,32 @@ public class PlayerCollider : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter2D(Collider2D otherGameObject) {
+	void OnTriggerEnter2D(Collider2D otherGameObject) { //Pick Up Item trigger
 		if (otherGameObject.tag == "DStone") {
 			this.pointsValue += 300;
 		}
 
-		if (otherGameObject.tag == "Enemy") {
+		if (otherGameObject.tag == "Enemy") { 		//Enemy Trigger
 			LifeCheck (minusDmg); // minus 1 life
 			}
 		}
-		//this._SetScore ();
 
-
-
-		public void ScoreCheck(int newScoreCheck)
+		public void ScoreCheck(int newScoreCheck) // This checks and updates the score
 	{
 		pointsValue += newScoreCheck;
 		DisplayScore ();
 	}
 
 	public void DisplayScore (){
-		pointsLabel.text = "DStone: " + pointsValue;
+		pointsLabel.text = "DStone: " + pointsValue; // This displays the score
 	}
 
-	public void LifeCheck (int newLifeCheck)
+	public void LifeCheck (int newLifeCheck)//This checks and updates the life
 	{
 		heartsValue -= newLifeCheck;
 		DisplayLife ();
 	}
-	public void DisplayLife()
+	public void DisplayLife() // This displays the Life
 	{
 		heartsLabel.text = "Hearts: " + heartsValue;
 		if (this.heartsValue == 0) {

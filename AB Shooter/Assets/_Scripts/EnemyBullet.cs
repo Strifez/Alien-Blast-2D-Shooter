@@ -4,13 +4,13 @@ using System.Collections;
 public class EnemyBullet : MonoBehaviour 
 {
 	public int minusLife; 
-	float speed;
-	Vector2 _direction;
-	bool isReady;
+	public float speed;
+	public Vector2 _direction;
+	public bool isReady;
 
-	private PlayerCollider playerCollider;
+	private PlayerCollider playerCollider; //again we need to reference a method
 
-	void Awake ()
+	void Awake ()  //initialize the stuff in this method before the game begins
 	{
 		speed = 5f;
 		isReady = false;
@@ -18,13 +18,13 @@ public class EnemyBullet : MonoBehaviour
 
 	void Start () 
 	{
-		GameObject playerColliderObject = GameObject.FindWithTag("Player");
+		GameObject playerColliderObject = GameObject.FindWithTag("Player"); // allows us to pull Life Check Method from the player collider script
 		if (playerColliderObject != null)
 		{
 			playerCollider = playerColliderObject.GetComponent<PlayerCollider>();
 		}
 	}
-	//Function to set the bullet's direction
+	//Function to set the bullet's direction (check external document for sources)
 	public void SetDirection(Vector2 direction)
 	{
 		//set the direction normalized, to get an unit vector
@@ -35,7 +35,7 @@ public class EnemyBullet : MonoBehaviour
 
 	void Update () 
 	{
-	if(isReady)
+	if(isReady) //checked external document for source
 		{
 			//get the bullet's current position
 			Vector2 position = transform.position;
@@ -60,7 +60,7 @@ public class EnemyBullet : MonoBehaviour
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D otherGameObject){
+	void OnTriggerEnter2D(Collider2D otherGameObject){ //allows us to minus life on the player
 		if (otherGameObject.tag == "Player") {
 			playerCollider.LifeCheck (minusLife);
 			Destroy (gameObject);

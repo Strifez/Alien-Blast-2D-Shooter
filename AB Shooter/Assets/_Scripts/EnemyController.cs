@@ -27,17 +27,13 @@ public class EnemyController : MonoBehaviour {
 		private float _CurrentSpeed;
 		private float _CurrentDrift;
 		
+		// Single Audio being played is when the enemy dies it makes the sound
+		AudioSource _deathSound;
 
-	AudioSource _deathSound;
-	//private AudioSource [] _audioSources;
-	//private AudioSource _deathSound;
 		// Use this for initialization
 		void Start () {
 		this._Reset ();
-		_deathSound = GetComponent<AudioSource> ();
-		//this._audioSources = this.GetComponents<AudioSource> ();
-	//	this._deathSound = this._audioSources [1];
-
+		_deathSound = GetComponent<AudioSource> (); // reason for not using the array is because it had problems when playing the sound and destroying the object
 	}
 		
 		// Update is called once per frame
@@ -47,7 +43,7 @@ public class EnemyController : MonoBehaviour {
 			currentPosition.y += this._CurrentSpeed;
 			gameObject.GetComponent<Transform> ().position = currentPosition;
 			
-			// Check left boundary
+			// Check left boundary, if the enemy passes the left side reset the enemy 
 			if (currentPosition.x <= boundary.xMin) { 
 				this._Reset();
 			}
@@ -57,14 +53,10 @@ public class EnemyController : MonoBehaviour {
 		if (otherGameObject.tag == "Bullet"){
 			this._Reset();
 			_deathSound.Play ();
-			//this._deathSound.Play ();
-
-
-
 		}
 
 	}
-		// resets the Enemy
+		// resets the Enemy method
 		public void _Reset() {
 			this._CurrentDrift = Random.Range (drift.minDrift, drift.maxDrift);
 			this._CurrentSpeed = Random.Range (speed.minSpeed, speed.maxSpeed);
