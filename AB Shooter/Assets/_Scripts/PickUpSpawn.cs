@@ -36,23 +36,24 @@ public class PickUpSpawn : MonoBehaviour {
 			{
 				for (int i = 0; i < pickUpCount; i++) 
 				{
-					Vector2 spawnPosition = new Vector2 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y);
+				  //(-spawnValues.x, spawnValues.x),(spawnValues.y)
+				Vector2 spawnPosition = new Vector2 (spawnValues.x, Random.Range(spawnValues.y, -spawnValues.y));
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (pickUp, spawnPosition, spawnRotation);
 					yield return new WaitForSeconds (spawnWait);
 				}
 				
 				yield return new WaitForSeconds(waveWait);
-				
 			}
 		}
 
 	void OnTriggerEnter2D(Collider2D otherGameObject) { //trigger to add points and destroy gameObject
 		if (otherGameObject.tag == "Player") {
 			Destroy (gameObject); 
-			playerCollider.ScoreCheck(DstonePoints); //add 300 points
+			playerCollider.ScoreCheck (DstonePoints); //add 300 points
 		}
-}
+	}
+
 }
 
 
