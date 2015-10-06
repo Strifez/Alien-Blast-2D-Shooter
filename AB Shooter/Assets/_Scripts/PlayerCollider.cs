@@ -14,14 +14,14 @@ public class PlayerCollider : MonoBehaviour {
 	public int DstonePoints= 300;
 
 	private AudioSource[] _audioSources; // an array of AudioSources
-	private AudioSource _backgroundMusic, _bulletshot;
+	private AudioSource _backgroundMusic, _splat;
 	// Use this for initialization
 	void Start () {
 			this.gameOverLabel.enabled = false;			// this is for the GUI text making sure the gameover text is not displayed until its time
 			this.totalPointsLabel.enabled = false;
 			this._audioSources = this.GetComponents<AudioSource> ();
 			this._backgroundMusic = this._audioSources [1];
-			this._bulletshot = this._audioSources [2];
+			this._splat = this._audioSources [2];
 	}
 	
 	// Update is called once per frame
@@ -34,7 +34,7 @@ public class PlayerCollider : MonoBehaviour {
 			ScoreCheck (DstonePoints); //+ 300 points for picking up Dstone
 		}
 
-		if (otherGameObject.tag == "Enemy") { 		//Enemy Trigger
+		if (otherGameObject.tag == "Enemy") { 	//Enemy Trigger
 			LifeCheck (minusDmg); // minus 1 life
 			}
 		}
