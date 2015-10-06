@@ -2,6 +2,11 @@
 using System.Collections;
 using UnityEngine.UI;
 
+//Jason Huang 300818592
+//Source: Professor Tom's Mail Pilot
+//Last Modified: Oct,5,2015
+//Description: Contains the GUI of the Game and the Triggers used to Add Points and Minus Lives
+
 public class PlayerCollider : MonoBehaviour {
 
 	public Text pointsLabel; // this is mostly taken from Mail Pilot done in Class
@@ -21,7 +26,7 @@ public class PlayerCollider : MonoBehaviour {
 			this.totalPointsLabel.enabled = false;
 			this._audioSources = this.GetComponents<AudioSource> ();
 			this._backgroundMusic = this._audioSources [1];
-			this._splat = this._audioSources [2];
+			//this._splat = this._audioSources [2];
 	}
 	
 	// Update is called once per frame

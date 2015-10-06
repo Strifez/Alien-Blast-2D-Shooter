@@ -1,7 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//Jason Huang 300818592
+//Source: Unity 2D Space Shooter Tutorial
+//Last Modified: Oct,5,2015
+//Description: Use to control where and when the Pick Up Object is spawned
+
 public class PickUpSpawn : MonoBehaviour {
+	//public instance variables
 	public int DstonePoints;
 	public GameObject pickUp;
 	public Vector2 spawnValues;
@@ -9,9 +15,8 @@ public class PickUpSpawn : MonoBehaviour {
 	public float spawnWait;
 	public float startWait;
 	public float waveWait;
+	//private instance variables
 	private PlayerCollider playerCollider;
-
-	//public GUIText restartText;
 
 	// Use this for initialization
 	void Start () {
@@ -28,7 +33,7 @@ public class PickUpSpawn : MonoBehaviour {
 	void Update () {
 
 	}
-	
+		//Spawner
 		IEnumerator PickUpWaves ()
 		{
 			yield return new WaitForSeconds (startWait);
@@ -47,6 +52,7 @@ public class PickUpSpawn : MonoBehaviour {
 			}
 		}
 
+	//Triggers
 	void OnTriggerEnter2D(Collider2D otherGameObject) { //trigger to add points and destroy gameObject
 		if (otherGameObject.tag == "Player") {
 			Destroy (gameObject); 

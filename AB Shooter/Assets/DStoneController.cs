@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DStoneController : MonoBehaviour {
+//Jason Huang 300818592
+//Source: Unity 2D Space Shooter Tutorial
+//Last Modified: Oct,5,2015
+//Description: Use to Control the PickUp Object Movement and Direction
 
+
+public class DStoneController : MonoBehaviour {
+	//public instances
 	public float speed;
 	public Vector2 dStoneDirection = Vector2.left; //the Vector is travelling means moving to the left
 	// Use this for initialization
@@ -25,6 +31,7 @@ public class DStoneController : MonoBehaviour {
 			Destroy(gameObject);
 		}
 	}
+	//Triggers
 	void OnTriggerEnter2D (Collider2D otherGameObject)
 	{
 		if (otherGameObject.tag == "Player") {

@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//Jason Huang 300818592
+//Source: Unity 2D Space Shooter Tutorial
+//Last Modified: Oct,5,2015
+//Description: Controls the Players Movement
+
 [System.Serializable]
 public class Boundary
 {
@@ -8,7 +13,8 @@ public class Boundary
 }
 
 public class PlayerController : MonoBehaviour {
-		
+
+		//public instances
 		public GameObject PlayerBulletGo;
 		public GameObject BulletSpawn;
 		
@@ -16,7 +22,8 @@ public class PlayerController : MonoBehaviour {
 		public Boundary boundary;
 
 		public float fireRate;
-		
+
+		//private instances
 		private float nextFire;
 		
 		void Update ()

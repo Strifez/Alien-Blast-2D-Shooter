@@ -1,10 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerBullet : MonoBehaviour {
+//Jason Huang 300818592
+//Source: Unity 2D Space Shooter Tutorial BY PIXELELMENT GAMES
+//Last Modified: Oct,5,2015
+//Description: Use to control the instantiation and destruction of the player bullet
 
-	public int addPoints; // public instances for adding points
+public class PlayerBullet : MonoBehaviour {
+	//public instances
+	public int addPoints; // adding points
 	public float speed;
+	//private instances
 	private PlayerCollider playerCollider; //reference purposes
 	// Use this for initialization
 	void Start () {
@@ -34,7 +40,7 @@ public class PlayerBullet : MonoBehaviour {
 			Destroy(gameObject);
 		}
 	}
-
+	//triggers
 	void OnTriggerEnter2D(Collider2D otherGameObject) { //trigger to add points and destroy gameObject
 		if (otherGameObject.tag == "Enemy") {
 			Destroy (gameObject); 

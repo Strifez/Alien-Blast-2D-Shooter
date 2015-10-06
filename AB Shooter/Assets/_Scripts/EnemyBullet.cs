@@ -1,13 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//Jason Huang 300818592
+//Source: Unity 2D Space Shooter Tutorial BY PIXELELMENT GAMES
+//Last Modified: Oct,5,2015
+//Description: Control the enemy fire at the player and directions
+
 public class EnemyBullet : MonoBehaviour 
 {
+	//public variables
 	public int minusLife; 
 	public float speed;
 	public Vector2 _direction;
 	public bool isReady;
-
+	//private variables
 	private PlayerCollider playerCollider; //again we need to reference a method
 
 	void Awake ()  //initialize the stuff in this method before the game begins
@@ -59,7 +65,7 @@ public class EnemyBullet : MonoBehaviour
 
 		}
 	}
-
+	//triggers
 	void OnTriggerEnter2D(Collider2D otherGameObject){ //allows us to minus life on the player
 		if (otherGameObject.tag == "Player") {
 			playerCollider.LifeCheck (minusLife);

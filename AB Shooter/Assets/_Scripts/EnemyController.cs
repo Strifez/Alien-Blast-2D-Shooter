@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//Jason Huang 300818592
+//Source: Professor Tom's Mail Pilot
+//Last Modified: Oct,5,2015
+//Description: Use to Control the Enemy Movement towards player
+
 [System.Serializable]
 public class Speed {
 	public float minSpeed, maxSpeed;
@@ -18,12 +23,12 @@ public class BoundaryEnemy {
 
 public class EnemyController : MonoBehaviour {
 
-		// PUBLIC INSTANCE VARIABLES
+		// public instance
 		public Speed speed;
 		public Drift drift;
 		public BoundaryEnemy boundary;
 		
-		// PRIVATE INSTANCE VARIABLES
+		// private instance
 		private float _CurrentSpeed;
 		private float _CurrentDrift;
 		
@@ -48,7 +53,7 @@ public class EnemyController : MonoBehaviour {
 				this._Reset();
 			}
 		}
-		
+		//triggers
 	void OnTriggerEnter2D(Collider2D otherGameObject) {
 		if (otherGameObject.tag == "Bullet"){
 			this._Reset();
